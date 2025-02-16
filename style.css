@@ -54,7 +54,7 @@ h1 {
     margin: 30px auto; 
     border-radius: 50%; 
     overflow: hidden; 
-    border: 5px solid black; 
+    border: 1px solid black; 
     cursor: pointer;
 }
 
