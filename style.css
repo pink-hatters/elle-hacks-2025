@@ -1,5 +1,5 @@
 body {
-    background-color: #ecc4d6;
+    background-color: #F5C4D9;
     color: white; 
     padding-top: 50px; 
     margin: 0;
@@ -8,6 +8,8 @@ body {
     border: 7px solid black;  
     box-sizing: border-box;
     font-family: "Pixelify Sans", serif;
+    color: #000;
+    font-size: x-large;
 }
 
 h1 {
@@ -42,7 +44,7 @@ h1 {
 }
 
 .button-container button:hover {
-    background-color: #477c84; 
+    background-color: #9bd2da; 
     border: 2px solid #666;  /* Outline changes color on hover */
 }
 
@@ -131,3 +133,4 @@ h1 {
         position: absolute;
         z-index: 10;
     }
+

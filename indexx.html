@@ -3,99 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Okay</title>
+    <title>PlushPal</title>
     <link rel="stylesheet" href="style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <title>Plushie</title>
-
 </head>
-
 
 <body>
   <h1 id="main-title">Hello!</h1>
   <h1 id="main-title">This is PlushPal, your care companion! </h1>
-    <!-- Circle with image inside -->
-    <div class="circle">
-        <!-- Hidden file input for selecting profile picture -->
-        <input type="file" id="profilePicInput" class="file-input" accept="image/*">
-        <!-- Image element to show selected profile picture -->
-        <img id="profilePic" src="your-image.jpg" alt="Profile Picture" class="circle-image">
-    </div>
+  
+  <!-- AI Response -->
+  <div id="ai-response"></div> <!-- This will display the AI message -->
 
-        <div class="button-container">
-            <a href="HABIT.html"><button class="rounded-button">Activity</button></a>
-            </div>
-    
+  <br>
 
-    <div class="spacer"></div>
+  <!-- GIF Display (Replacing the Circle with the GIFs logic) -->
+  <div class="circle">
+  <div id="gif-display">
+      <!-- Default image will be shown initially -->
+      <img id="gif-image" src="default.gif" alt="Status GIF">
+  </div>
+  </div>
 
-    <div class="progress-group">
-      <div class="progress-bar-update">
-        </div>
+  <div class="button-container">
+      <a href="habit.html"><button class="rounded-button">Activity</button></a>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Progress Bars with sliders directly on top -->
+  <div class="progress-group">
+      <div class="slider-group">
+          <div class="progress-title">AFFECTION</div>
+          <input type="range" id="affectionSlider" min="0" max="100" value="50">
       </div>
+      <div class="progress-bar" id="Affection">
+          <div id="progressAffection" class="progress"></div>
+      </div>
+  </div>
 
-        <div class="progress-group">
-            <div class="progress-title">AFFECTION</div>
-            <div class="progress-bar" id="Affection">
-              <div id="progressAffection" class="progress"></div>
-            </div>
-      
-          </div>
-          <div class="progress-group">
-            <div class="progress-bar-update">
-              </div>
-            </div>
+  <div class="progress-group">
+      <div class="slider-group">
+          <div class="progress-title">REST</div>
+          <input type="range" id="restSlider" min="0" max="100" value="50">
+      </div>
+      <div class="progress-bar" id="Rest">
+          <div id="progressRest" class="progress"></div>
+      </div>
+  </div>
 
-          <!-- Rest Progress Bar -->
-          <div class="progress-group">
-            <div class="progress-title">REST</div>
-            <div class="progress-bar" id="Rest">
-              <div id="progressRest" class="progress"></div>
-            </div>
-          </div>
+  <div class="progress-group">
+      <div class="slider-group">
+          <div class="progress-title">FOOD</div>
+          <input type="range" id="foodSlider" min="0" max="100" value="50">
+      </div>
+      <div class="progress-bar" id="Health">
+          <div id="progressFood" class="progress"></div>
+      </div>
+  </div>
 
-          <div class="progress-group">
-            <div class="progress-bar-update">
-              </div>
-            </div>
-        
-          <!-- Health Progress Bar -->
-          <div class="progress-group">
-            <div class="progress-title">FOOD</div>
-            <div class="progress-bar" id="Health">
-              <div id="progressHealth" class="progress"></div>
-            </div>
-          </div>
+  <script>
+    // Get the slider elements and progress bars
+    const affectionSlider = document.getElementById('affectionSlider');
+    const restSlider = document.getElementById('restSlider');
+    const foodSlider = document.getElementById('foodSlider');
 
+    const progressAffection = document.getElementById('progressAffection');
+    const progressRest = document.getElementById('progressRest');
+    const progressFood = document.getElementById('progressFood');
 
-      
-          <script>
-              // Get elements for the file input and profile picture display
-              const profilePicInput = document.getElementById('profilePicInput');
-              const profilePic = document.getElementById('profilePic');
-      
-              // Event listener for when the user selects a file
-              profilePicInput.addEventListener('change', function(event) {
-                  const file = event.target.files[0]; // Get the first file selected
-      
-                  if (file) {
-                      const reader = new FileReader(); // Create a new FileReader instance
-                      reader.onload = function(e) {
-                          // Set the profile picture source to the selected image
-                          profilePic.src = e.target.result;
-                      };
-                      reader.readAsDataURL(file); // Convert the file to a data URL
-                  }
-              });
-      
-              // Allow clicking on the circle to trigger the file input
-              document.querySelector('.circle').addEventListener('click', function() {
-                  profilePicInput.click(); // Trigger the file input click event
-              });
-          </script>
+    const aiResponse = document.getElementById('ai-response');
+    const gifImage = document.getElementById('gif-image');
 
+    // Function to update the progress bars, AI response message, and GIF
+    function updateProgress() {
+        // Update the progress bars
+        progressAffection.style.width = `${affectionSlider.value}%`;
+        progressRest.style.width = `${restSlider.value}%`;
+        progressFood.style.width = `${foodSlider.value}%`;
+
+        // Generate the AI message based on the slider values
+        let message = '';
+
+        if (foodSlider.value < 30) {
+            message += 'Oh I am feeling hungry, don\'t forget to take your medications!';
+        } else if (restSlider.value < 30) {
+            message += 'It looks like you need some rest, take it easy!';
+        } else if (affectionSlider.value < 30) {
+            message += 'I am feeling sad... I could use a pet right now.';
+        } else {
+            message += 'You seem to be doing great! Keep it up!';
+        }
+
+        // Display the AI-generated message
+        aiResponse.textContent = message;
+
+        // Check if any stat is less than 30 and display sad.gif
+        if (affectionSlider.value < 30 || restSlider.value < 30 || foodSlider.value < 30) {
+            gifImage.src = 'sad.gif'; // Show sad.gif if any stat is below 30
+        } else {
+            // Check which stat is the highest and display the corresponding GIF
+            if (foodSlider.value > affectionSlider.value && foodSlider.value > restSlider.value) {
+                gifImage.src = 'health.gif'; // Show health.gif if food is the highest
+            } else if (restSlider.value > affectionSlider.value && restSlider.value > foodSlider.value) {
+                gifImage.src = 'sleeping.gif'; // Show sleeping.gif if rest is the highest
+            } else if (affectionSlider.value > restSlider.value && affectionSlider.value > foodSlider.value) {
+                gifImage.src = 'affection.gif'; // Show affection.gif if affection is the highest
+            } else if (affectionSlider.value === restSlider.value && affectionSlider.value === foodSlider.value) {
+                gifImage.src = 'default.gif'; // Show default.gif if all are equally high
+            }
+        }
+    }
+
+    // Add event listeners to the sliders to update progress dynamically
+    affectionSlider.addEventListener('input', updateProgress);
+    restSlider.addEventListener('input', updateProgress);
+    foodSlider.addEventListener('input', updateProgress);
+
+    // Initial call to update progress and message
+    updateProgress();
+  </script>   
 </body>
 </html>
