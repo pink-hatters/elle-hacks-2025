@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      lang="text/javascript"
-      src="https://unpkg.com/simple-web-serial@latest/dist/simple-web-serial.min.js"
-    ></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <button id="permissionElement">Connect to Serial Port</button>
-    <br /><br />
-    <button onclick="toggleLED()">Toggle LED</button>
-    <script type="text/javascript">
-      let toggle = false;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="proj.css">
+  <script src="plushie.js"></script>
+  
+  <!--pixel font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+   
+<title>Plushie</title>
+</head>
+<body>
+    <h1 id="main-title">PlUSHIE <br> HABIT TRACKER</h1>
+    <div style="text-align: center;">
+        <div id="object-space" style="width: 200px; height: 200px; border: 2px solid black; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+            <p>Toy goes here</p>
+        </div>
+        <div style="margin-top: 20px;">
+          <br>
+            <button onclick="buttonAction" id="Activity">Activity</button><br>
+       
+        </div>
+    </div>
+    
+    <script>
+        function buttonAction(){
+            alert("Entering activity page");
+        }
 
-      const connection = SimpleWebSerial.setupSerialConnection();
-      document
-        .querySelector("#permissionElement")
-        .addEventListener("click", connection.startConnection);
-
-      async function toggleLED() {
-        const byte = (toggle = !toggle) ? 0 : 1;
-        connection.send("led", byte);
-      }
     </script>
+   
 
-    <p id="explanation">
-      This is the easiest use case. The library handles requesting permission,
-      setting up objects and converting bytes to an array readable by the
-      Serial.read() function of the Arduino.
-    </p>
-  </body>
+
+<p>
+</p>
+
+
+ </div>
+ 
+   
+</body>
 </html>
