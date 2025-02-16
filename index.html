@@ -14,13 +14,12 @@
 <title>Plushie</title>
 </head>
 <body>
-    <h1 id="main-title">PlUSHIE <br> HABIT TRACKER</h1>
+    <h1 id="main-title">PlUSHIE HABIT TRACKER</h1>
     <div style="text-align: center;">
         <div id="object-space" style="width: 200px; height: 200px; border: 2px solid black; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
             <p>Toy goes here</p>
         </div>
         <div style="margin-top: 20px;">
-          <br>
             <button onclick="buttonAction" id="Activity">Activity</button><br>
        
         </div>
@@ -28,12 +27,33 @@
     
     <script>
         function buttonAction(){
-            alert("Entering activity page");
+            alert("Entering activity page ");
         }
 
     </script>
    
-
+    <div class="progress-group">
+        <div class="progress-title">AFFECTION</div>
+        <div class="progress-bar" id="Affection">
+          <div id="progressAffection" class="progress"></div>
+        </div>
+      </div>
+    
+      <!-- Rest Progress Bar -->
+      <div class="progress-group">
+        <div class="progress-title">REST</div>
+        <div class="progress-bar" id="Rest">
+          <div id="progressRest" class="progress"></div>
+        </div>
+    
+      <!-- Health Progress Bar -->
+      <div class="progress-group">
+        <div class="progress-title">HEALTH</div>
+        <div class="progress-bar" id="Health">
+          <div id="progressHealth" class="progress"></div>
+        </div>
+      </div>
+</div>
 
 <p>
 </p>

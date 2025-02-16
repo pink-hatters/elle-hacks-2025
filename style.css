@@ -71,17 +71,17 @@ h1 {
 }
 
 .progress-bar {
-    width: 700px;
-    height: 50px; /* Adjust height */
+    width: 400px;
+    height: 20px; /* Adjust height */
     background-color: #f0f0f0;
     height: 30px;
     border-radius: 12px;
     margin-bottom: 50px;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
   
   }
-
-
   
   .progress {
     width: 0px;
@@ -95,8 +95,12 @@ h1 {
   }
   
   .progress-group {
-      margin-bottom: 20px;
       text-align: center;
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+    color: black;
     }
   
     .progress-title {
@@ -109,8 +113,3 @@ h1 {
     }
   
   
-  bars
-  {
-      align-self: center;
-      align-content: center;
-  }
